@@ -60,10 +60,12 @@ if python3
     exe 'py3file' pyfile
     au InsertLeave * py3 fcitx2en()
     au InsertEnter * py3 fcitx2zh()
+    au VimLeave * py3 fcitx_restore()
 else
     exe 'pyfile' pyfile
     au InsertLeave * py fcitx2en()
     au InsertEnter * py fcitx2zh()
+    au VimLeave * py fcitx_restore()
 endif
 " ---------------------------------------------------------------------
 "  Restoration And Modelines:

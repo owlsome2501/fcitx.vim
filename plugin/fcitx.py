@@ -36,6 +36,9 @@ class FcitxComm(object):
             self._command,
             self.DEACTIVATE if self.keyboard_first else self.ACTIVATE)
 
+    def restore(self):
+        self.activate() if self._saved_status else self.deactivate()
+
     def _error(self, e):
         estr = str(e).replace('"', r'\"')
         file = self.socketfile.replace('"', r'\"')
@@ -94,3 +97,7 @@ def fcitx2zh():
         vim.command('let b:inputtoggle = 0')
         if not Fcitx.keyboard_first:
             Fcitx.activate()
+
+
+def fcitx_restore():
+    Fcitx.restore()
